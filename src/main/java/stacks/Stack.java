@@ -27,9 +27,7 @@ public class Stack<T> {
       throw new IllegalStateException("Unable to push element to full stack");
     }
 
-    top++;
-
-    arr[top] = elem;
+    arr[++top] = elem;
   }
 
   public T pop() {
@@ -37,11 +35,7 @@ public class Stack<T> {
       throw new IllegalStateException("Unable to pop element from empty stack");
     }
 
-    T elem = arr[top];
-
-    top--;
-
-    return elem;
+    return arr[top--];
   }
 
   public int size() {
