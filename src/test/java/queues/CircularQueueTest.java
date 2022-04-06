@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("BasicQueue Test")
-class BasicQueueTest {
+@DisplayName("CircularQueue Test")
+class CircularQueueTest {
   @Test
   @DisplayName("isEmpty returns true for a newly initialised queue")
   void isEmptyReturnsTrueForANewlyIntialisedQueueTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 1);
+    CircularQueue queue = new CircularQueue(1);
 
     assertTrue(queue.isEmpty());
   }
@@ -18,7 +18,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("isEmpty returns false for a queue containing elements")
   void isEmptyReturnsFalseForAQueueContainingElementsTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 1);
+    CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
 
@@ -28,7 +28,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("isEmpty returns true after the last element in a queue has been dequeued")
   void isEmptyReturnsTrueAfterTheLastElementInAQueueHasBeenDequeuedTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 1);
+    CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
     queue.deQueue();
@@ -39,7 +39,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("isFull returns true for a full queue")
   void isFullReturnsTrueForFullQueueTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 1);
+    CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
 
@@ -49,7 +49,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("isFull returns false for a queue that is not full")
   void isFullReturnsFalseForAQueueThatIsNotFullTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 2);
+    CircularQueue queue = new CircularQueue(2);
 
     queue.enQueue(1);
 
@@ -59,7 +59,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("enQueue adds an element to the end of the queue")
   void enQueueAddsAnElementToTheEndOfTheQueueTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 2);
+    CircularQueue queue = new CircularQueue(2);
 
     queue.enQueue(1);
     queue.enQueue(2);
@@ -70,7 +70,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("enQueuing to a full queue throws an IllegalStateException")
   void enQueuingToAFullQueueThrowsAnIllegalStateExceptionTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 1);
+    CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
 
@@ -82,7 +82,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("deQueue removes the element at the front of the queue")
   void deQueueRemovesTheElementAtTheFrontOfTheQueueTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 2);
+    CircularQueue queue = new CircularQueue(2);
 
     queue.enQueue(1);
     queue.enQueue(2);
@@ -93,7 +93,7 @@ class BasicQueueTest {
   @Test
   @DisplayName("deQueuing from an empty queue throws an IllegalStateException")
   void deQueuingFromAnEmptyQueueThrowsAnIllegalStateExceptionTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 1);
+    CircularQueue queue = new CircularQueue(2);
 
     IllegalStateException exception = assertThrows(IllegalStateException.class, queue::deQueue);
     assertEquals("Unable to dequeue element from empty queue", exception.getMessage());
@@ -102,11 +102,11 @@ class BasicQueueTest {
   @Test
   @DisplayName("toString returns a string representation of the queue")
   void toStringTest() {
-    BasicQueue<Integer> queue = new BasicQueue<>(Integer.class, 5);
+    CircularQueue queue = new CircularQueue(5);
 
     queue.enQueue(1);
     queue.enQueue(2);
 
-    assertEquals("BasicQueue{[1, 2, null, null, null]}", queue.toString());
+    assertEquals("CircularQueue{[1, 2, 0, 0, 0]}", queue.toString());
   }
 }
