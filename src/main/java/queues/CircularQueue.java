@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class CircularQueue {
   private final int capacity;
+  private final int[] arr;
   private int front;
   private int back;
-  private int[] arr;
 
   public CircularQueue(final int capacity) {
     this.capacity = capacity;
@@ -23,7 +23,7 @@ public class CircularQueue {
     return front == -1;
   }
 
-  public void enQueue(int elem) {
+  public void enQueue(final int elem) {
     if (isFull()) {
       throw new IllegalStateException("Unable to enqueue element to full queue");
     }
@@ -41,7 +41,7 @@ public class CircularQueue {
       throw new IllegalStateException("Unable to dequeue element from empty queue");
     }
 
-    int elem = arr[front];
+    final int elem = arr[front];
 
     if (front == back) {
       resetPointers();

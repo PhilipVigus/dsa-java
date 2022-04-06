@@ -9,7 +9,7 @@ public class BasicQueue<T> {
   private int front = -1;
   private int back = -1;
 
-  public BasicQueue(Class<T> clazz, int capacity) {
+  public BasicQueue(final Class<T> clazz, final int capacity) {
     arr = (T[]) Array.newInstance(clazz, capacity);
     this.capacity = capacity;
   }
@@ -22,7 +22,7 @@ public class BasicQueue<T> {
     return front == -1;
   }
 
-  public void enQueue(T elem) {
+  public void enQueue(final T elem) {
     if (isFull()) {
       throw new IllegalStateException("Unable to enqueue element to full queue");
     }
@@ -41,7 +41,7 @@ public class BasicQueue<T> {
       throw new IllegalStateException("Unable to dequeue element from empty queue");
     }
 
-    T elem = arr[front];
+    final T elem = arr[front];
 
     if (front >= back) {
       resetPointers();

@@ -10,7 +10,7 @@ class CircularQueueTest {
   @Test
   @DisplayName("isEmpty returns true for a newly initialised queue")
   void isEmptyReturnsTrueForANewlyIntialisedQueueTest() {
-    CircularQueue queue = new CircularQueue(1);
+    final CircularQueue queue = new CircularQueue(1);
 
     assertTrue(queue.isEmpty());
   }
@@ -18,7 +18,7 @@ class CircularQueueTest {
   @Test
   @DisplayName("isEmpty returns false for a queue containing elements")
   void isEmptyReturnsFalseForAQueueContainingElementsTest() {
-    CircularQueue queue = new CircularQueue(1);
+    final CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
 
@@ -28,7 +28,7 @@ class CircularQueueTest {
   @Test
   @DisplayName("isEmpty returns true after the last element in a queue has been dequeued")
   void isEmptyReturnsTrueAfterTheLastElementInAQueueHasBeenDequeuedTest() {
-    CircularQueue queue = new CircularQueue(1);
+    final CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
     queue.deQueue();
@@ -39,7 +39,7 @@ class CircularQueueTest {
   @Test
   @DisplayName("isFull returns true for a full queue")
   void isFullReturnsTrueForFullQueueTest() {
-    CircularQueue queue = new CircularQueue(1);
+    final CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
 
@@ -49,7 +49,7 @@ class CircularQueueTest {
   @Test
   @DisplayName("isFull returns false for a queue that is not full")
   void isFullReturnsFalseForAQueueThatIsNotFullTest() {
-    CircularQueue queue = new CircularQueue(2);
+    final CircularQueue queue = new CircularQueue(2);
 
     queue.enQueue(1);
 
@@ -59,7 +59,7 @@ class CircularQueueTest {
   @Test
   @DisplayName("enQueue adds an element to the end of the queue")
   void enQueueAddsAnElementToTheEndOfTheQueueTest() {
-    CircularQueue queue = new CircularQueue(2);
+    final CircularQueue queue = new CircularQueue(2);
 
     queue.enQueue(1);
     queue.enQueue(2);
@@ -70,11 +70,11 @@ class CircularQueueTest {
   @Test
   @DisplayName("enQueuing to a full queue throws an IllegalStateException")
   void enQueuingToAFullQueueThrowsAnIllegalStateExceptionTest() {
-    CircularQueue queue = new CircularQueue(1);
+    final CircularQueue queue = new CircularQueue(1);
 
     queue.enQueue(1);
 
-    IllegalStateException exception =
+    final IllegalStateException exception =
         assertThrows(IllegalStateException.class, () -> queue.enQueue(2));
     assertEquals("Unable to enqueue element to full queue", exception.getMessage());
   }
@@ -82,7 +82,7 @@ class CircularQueueTest {
   @Test
   @DisplayName("deQueue removes the element at the front of the queue")
   void deQueueRemovesTheElementAtTheFrontOfTheQueueTest() {
-    CircularQueue queue = new CircularQueue(2);
+    final CircularQueue queue = new CircularQueue(2);
 
     queue.enQueue(1);
     queue.enQueue(2);
@@ -93,16 +93,17 @@ class CircularQueueTest {
   @Test
   @DisplayName("deQueuing from an empty queue throws an IllegalStateException")
   void deQueuingFromAnEmptyQueueThrowsAnIllegalStateExceptionTest() {
-    CircularQueue queue = new CircularQueue(2);
+    final CircularQueue queue = new CircularQueue(2);
 
-    IllegalStateException exception = assertThrows(IllegalStateException.class, queue::deQueue);
+    final IllegalStateException exception =
+        assertThrows(IllegalStateException.class, queue::deQueue);
     assertEquals("Unable to dequeue element from empty queue", exception.getMessage());
   }
 
   @Test
   @DisplayName("toString returns a string representation of the queue")
   void toStringTest() {
-    CircularQueue queue = new CircularQueue(5);
+    final CircularQueue queue = new CircularQueue(5);
 
     queue.enQueue(1);
     queue.enQueue(2);

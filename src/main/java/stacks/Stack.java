@@ -8,7 +8,7 @@ public class Stack<T> {
   private final int capacity;
   private int top;
 
-  public Stack(Class<T> clazz, int size) {
+  public Stack(final Class<T> clazz, final int size) {
     arr = (T[]) Array.newInstance(clazz, size);
     capacity = size;
     top = -1;
@@ -22,7 +22,7 @@ public class Stack<T> {
     return top == -1;
   }
 
-  public void push(T elem) {
+  public void push(final T elem) {
     if (isFull()) {
       throw new IllegalStateException("Unable to push element to full stack");
     }
